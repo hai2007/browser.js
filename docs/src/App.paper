@@ -1,0 +1,121 @@
+<template>
+    <header>
+        <span>@hai2007/browser</span>
+        <nav>
+            <span @click='loadpage("begin","no")' :active='url=="begin"?"yes":"no"'>
+                开始
+            </span>
+            <span @click='loadpage("api","no")' :active='url=="api"?"yes":"no"'>
+                文档
+            </span>
+            <span>
+                <a href="https://github.com/hai2007/browser.js" target="_blank">GitHub</a>
+            </span>
+            <ui-search></ui-search>
+        </nav>
+    </header>
+    <div class='content'>
+        <component :is='page'></component>
+    </div>
+</template>
+<script>
+
+    import uiSearch from './components/ui-search.paper';
+
+    let pages = {
+        begin: () => import('./pages/begin/index.paper'),
+        api: () => import('./pages/api/index.paper')
+    };
+
+    export default {
+        data() {
+            return {
+                page: null,
+                url: ""
+            };
+        },
+        mounted() {
+            let routers = this.urlFormat(window.location.href).router;
+            this.loadpage(routers[0] in pages ? routers[0] : "begin");
+
+        },
+        methods: {
+            loadpage(url, flag) {
+                pages[url]().then(data => {
+                    if (flag == 'no') window.location.href = "#/" + url;
+                    this.url = url;
+                    this.page = data.default;
+                });
+            }
+        },
+        component: {
+            uiSearch
+        }
+    };
+</script>
+<style lang="scss">
+    [quickpaper] {
+        &>header {
+            background-color: #fff;
+            border-bottom: 1px solid #eaecef;
+            height: 60px;
+            line-height: 60px;
+            padding-left: 80px;
+            padding-right: 10px;
+            background-image: url('./assets/logo.png');
+            background-size: auto 70%;
+            background-position: 20px center;
+            background-repeat: no-repeat;
+            white-space: nowrap;
+
+            &>span {
+                font-family: cursive;
+                font-size: 20px;
+                font-weight: 200;
+            }
+
+            &>nav {
+                position: absolute;
+                right: 10px;
+                top: 0;
+                z-index: 2;
+
+                &>span {
+                    margin-right: 10px;
+                    font-size: 14px;
+                    cursor: pointer;
+                    padding: 0 10px;
+                    display: inline-block;
+                    vertical-align: top;
+
+                    &>a {
+                        position: relative;
+                        margin-right: 30px;
+
+                        &::after {
+                            position: absolute;
+                            background-image: url('./assets/link.png');
+                            background-repeat: no-repeat;
+                            content: " ";
+                            display: inline-block;
+                            width: 11px;
+                            height: 11px;
+                            top: 3px;
+                            right: -16px;
+                        }
+
+                    }
+
+                    &[active='yes'] {
+                        border-bottom: 2px solid red;
+                        font-weight: 800;
+                    }
+
+                    &:hover {
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+    }
+</style>

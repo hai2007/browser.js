@@ -1,0 +1,33 @@
+{
+  "name": "docs",
+  "version": "0.1.0",
+  "description": "browser.js文档",
+  "scripts": {
+    "start": "npm install && npm run dev",
+    "dev": "node_modules/.bin/webpack-dev-server --config webpack.dev.js",
+    "build": "nodejs -d dist && webpack --config webpack.prod.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@hai2007/algorithm": "^0.6.2",
+    "@hai2007/nodejs": "^2.0.1",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "file-loader": "^4.0.0",
+    "postcss": "^7.0.14",
+    "postcss-loader": "^3.0.0",
+    "url-loader": "^2.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@hai2007/polyfill": "^0.1.1",
+    "@hai2007/style": "^0.2.3",
+    "open-web-editor": "^0.3.2",
+    "quick-paper": "^1.0.0"
+  }
+}

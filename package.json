@@ -1,0 +1,33 @@
+{
+  "name": "@hai2007/browser",
+  "version": "0.1.0",
+  "description": "🌐 基于浏览器开发的常用工具类方法或浏览器相关的操作，比如判断浏览器类型和版本等。",
+  "main": "./dist/browser.min.js",
+  "scripts": {
+    "start": "npm install && npm run build",
+    "build": "npm run rollup && npm run uglifyjs && nodejs --config ./nodejs.config.js",
+    "rollup": "rollup --config rollup.config.js",
+    "uglifyjs": "uglifyjs ./dist/browser.js -m -o ./dist/browser.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hai2007/browser.js.git"
+  },
+  "keywords": [
+    "hai2007",
+    "browser"
+  ],
+  "author": "你好2007",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hai2007/browser.js/issues"
+  },
+  "homepage": "https://hai2007.github.io/browser.js",
+  "devDependencies": {
+    "@hai2007/nodejs": "^2.0.1",
+    "rollup": "^1.17.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "uglify-js": "^3.10.2"
+  }
+}
