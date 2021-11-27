@@ -1,0 +1,153 @@
+<template class='doc-view'>
+    <header id='fixed-top'>
+        常用的DOM操作
+    </header>
+    <pre q-code>
+        import xhtml from '@hai2007/browser/xhtml.js';
+    </pre>
+    <p>
+        阻止冒泡
+    </p>
+    <pre q-code>
+    xhtml.stopPropagation(event);
+</pre>
+    <p>
+        阻止默认事件
+    </p>
+    <pre q-code>
+    xhtml.preventDefault(event);
+</pre>
+    <p>
+        判断是否是结点
+    </p>
+    <pre q-code>
+    xhtml.isNode(param);
+</pre>
+    <p>
+        绑定事件
+    </p>
+    <pre q-code>
+    xhtml.bind(dom|domArray, eventType, callback);
+</pre>
+    <p>
+        去掉绑定事件
+    </p>
+    <pre q-code>
+    xhtml.unbind(dom|domArray, eventType, handler);
+</pre>
+    <p>
+        在当前上下文context上查找结点
+    </p>
+    <pre q-code>
+// selectFun可选，返回boolean用以判断当前面对的结点是否保留(下同)
+xhtml.find(context, selectFun, tagName);
+</pre>
+    <p>
+        寻找当前结点的孩子结点
+    </p>
+    <pre q-code>
+    xhtml.children(dom, selectFun);
+</pre>
+    <p>
+        判断结点是否有指定class
+    </p>
+    <pre q-code>
+// clazzs可以是字符串或数组字符串
+// notStrict可选，boolean值，默认false表示结点必须包含全部class,true表示至少包含一个即可
+xhtml.hasClass(dom, clazzs, notStrict);
+</pre>
+    <p>
+        删除指定class
+    </p>
+    <pre q-code>
+    xhtml.removeClass(dom, clazz);
+</pre>
+    <p>
+        添加指定class
+    </p>
+    <pre q-code>
+    xhtml.addClass(dom, clazz);
+</pre>
+    <p>
+        字符串变成结点
+    </p>
+    <pre q-code>
+// isSvg可选，boolean值，默认false表示结点是html，为true表示svg类型
+xhtml.toNode(string, isSvg);
+</pre>
+    <p>
+        主动触发事件
+    </p>
+    <pre q-code>
+    xhtml.trigger(dom, eventType);
+</pre>
+    <p>
+        获取样式
+    </p>
+    <pre q-code>
+    xhtml.getStyle(dom, name);
+</pre>
+    <p>
+        获取元素位置
+    </p>
+    <pre q-code>
+    xhtml.offsetPosition(dom);
+</pre>
+    <p>
+        获取鼠标相对元素位置
+    </p>
+    <pre q-code>
+    xhtml.mousePosition(dom, event);
+</pre>
+    <p>
+        删除结点
+    </p>
+    <pre q-code>
+    xhtml.remove(dom);
+</pre>
+    <p>
+        设置多个样式
+    </p>
+    <pre q-code>
+    xhtml.setStyles(dom, styleJson);
+</pre>
+    <p>
+        获取元素大小
+    </p>
+    <pre q-code>
+// type可选，默认border
+xhtml.size(dom[, type]);
+
+/*
+type有如下可选：
+1.content:内容
+2.padding:内容+内边距
+3.border:内容+内边距+边框
+4.scroll:滚动的宽（不包括border）
+*/
+</pre>
+    <p>
+        在被选元素内部的结尾插入内容
+    </p>
+    <pre q-code>
+    var node = xhtml.append(el, template|node);
+</pre>
+    <p>
+        在被选元素内部的开头插入内容
+    </p>
+    <pre q-code>
+    var node = xhtml.prepend(el, template|node);
+</pre>
+    <p>
+        在被选元素之后插入内容
+    </p>
+    <pre q-code>
+    var node = xhtml.after(el, template|node);
+</pre>
+    <p>
+        在被选元素之前插入内容
+    </p>
+    <pre q-code>
+    var node = xhtml.before(el, template|node);
+</pre>
+</template>

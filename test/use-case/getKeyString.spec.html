@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用例测试 | browser.js / getKeyString.js</title>
+    <script src="../../dist/browser.js"></script>
+</head>
+
+<body onkeydown="doit()">
+
+    按下任意键以后查看控制台！
+
+    <script>
+
+        function doit(event) {
+            console.log(browser.getKeyString(event));
+        }
+
+    </script>
+
+</body>
+
+</html>

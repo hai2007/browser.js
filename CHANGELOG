@@ -3,3 +3,8 @@ v0.1.0:
     changes:
       -  初始化版本
       -  添加 “颜色格式化” formatColor.js
+v0.2.0:
+    date:2021-11-27
+    changes:
+      -  新增一些功能
+        （“提供常用的DOM操作方法” xhtml.js + “获取键盘此时按下的键的组合结果” getKeyString.js）

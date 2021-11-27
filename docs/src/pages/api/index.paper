@@ -5,6 +5,16 @@
                 <h3 @click='openPage("formatColor","top","no")'>格式化颜色</h3>
             </li>
         </ul>
+        <ul :active='pagename=="xhtml"?"yes":"no"'>
+            <li>
+                <h3 @click='openPage("xhtml","top","no")'>常用的DOM操作</h3>
+            </li>
+        </ul>
+        <ul :active='pagename=="getKeyString"?"yes":"no"'>
+            <li>
+                <h3 @click='openPage("getKeyString","top","no")'>键盘按下的键的组合结果</h3>
+            </li>
+        </ul>
     </div>
     <div id='root-view' class='view'>
         <div>
@@ -16,7 +26,9 @@
     import fixedScroll from '../../Service/fixedScroll.js';
 
     let pages = {
-        formatColor: () => import('./formatColor.paper')
+        formatColor: () => import('./formatColor.paper'),
+        xhtml: () => import('./xhtml.paper'),
+        getKeyString: () => import('./getKeyString.paper')
     };
 
     export default {

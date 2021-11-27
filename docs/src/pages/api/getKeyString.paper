@@ -1,0 +1,15 @@
+<template class='doc-view'>
+    <header id='fixed-top'>
+        键盘按下的键的组合结果
+    </header>
+    <pre q-code>
+        import getKeyString from '@hai2007/browser/getKeyString.js';
+    </pre>
+    <pre q-code>
+// event表示原生事件对象
+var keyString = getKeyString(event);
+    </pre>
+    <p>
+        返回的keyString就是此时按下的键。
+    </p>
+</template>
