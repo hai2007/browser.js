@@ -1,0 +1,29 @@
+<template class='doc-view'>
+    <header id='fixed-top'>
+        工具类方法
+    </header>
+    <h2 id='fixed-formatColor'>
+        格式化颜色
+    </h2>
+    <pre q-code>
+        import formatColor from '@hai2007/browser/formatColor.js';
+    </pre>
+    <pre q-code>
+// 把颜色统一转变成rgba(x,x,x,x)格式
+// 返回数字数组[r,g,b,a]
+var colorArray = formatColor(color);
+    </pre>
+    <h2 id='fixed-getKeyString'>
+        键盘按下的键的组合结果
+    </h2>
+    <pre q-code>
+        import getKeyString from '@hai2007/browser/getKeyString.js';
+    </pre>
+    <pre q-code>
+// event表示原生事件对象
+var keyString = getKeyString(event);
+    </pre>
+    <p>
+        返回的keyString就是此时按下的键。
+    </p>
+</template>

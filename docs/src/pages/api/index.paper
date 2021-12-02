@@ -1,18 +1,89 @@
 <template class='nav-view'>
     <div class="menu">
-        <ul :active='pagename=="formatColor"?"yes":"no"'>
+        <ul :active='pagename=="tool"?"yes":"no"'>
             <li>
-                <h3 @click='openPage("formatColor","top","no")'>格式化颜色</h3>
+                <h3 @click='openPage("tool","top","no")'>工具类方法</h3>
+                <ul>
+                    <li>
+                        <h3 @click='doScroll("formatColor")'>格式化颜色</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("getKeyString")'>键盘按下的键的组合结果</h3>
+                    </li>
+                </ul>
             </li>
         </ul>
         <ul :active='pagename=="xhtml"?"yes":"no"'>
             <li>
                 <h3 @click='openPage("xhtml","top","no")'>常用的DOM操作</h3>
-            </li>
-        </ul>
-        <ul :active='pagename=="getKeyString"?"yes":"no"'>
-            <li>
-                <h3 @click='openPage("getKeyString","top","no")'>键盘按下的键的组合结果</h3>
+                <ul class='small-li'>
+                    <li>
+                        <h3 @click='doScroll("stopPropagation")'>stopPropagation</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("preventDefault")'>preventDefault</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("isNode")'>isNode</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("bind")'>bind</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("unbind")'>unbind</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("find")'>find</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("children")'>children</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("hasClass")'>hasClass</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("removeClass")'>removeClass</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("addClass")'>addClass</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("toNode")'>toNode</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("trigger")'>trigger</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("getStyle")'>getStyle</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("offsetPosition")'>offsetPosition</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("mousePosition")'>mousePosition</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("remove")'>remove</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("setStyles")'>setStyles</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("size")'>size</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("append")'>append</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("prepend")'>prepend</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("after")'>after</h3>
+                    </li>
+                    <li>
+                        <h3 @click='doScroll("before")'>before</h3>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -26,9 +97,8 @@
     import fixedScroll from '../../Service/fixedScroll.js';
 
     let pages = {
-        formatColor: () => import('./formatColor.paper'),
-        xhtml: () => import('./xhtml.paper'),
-        getKeyString: () => import('./getKeyString.paper')
+        tool: () => import('./tool.paper'),
+        xhtml: () => import('./xhtml.paper')
     };
 
     export default {
@@ -40,7 +110,7 @@
         },
         mounted() {
             let urlJson = this.urlFormat(window.location.href);
-            this.openPage(urlJson.router[1] in pages ? urlJson.router[1] : "formatColor", urlJson.params.fixed || "top");
+            this.openPage(urlJson.router[1] in pages ? urlJson.router[1] : "tool", urlJson.params.fixed || "top");
         },
         methods: {
             openPage(pagename, fixedName, flag) {
@@ -58,3 +128,15 @@
         }
     };
 </script>
+<style>
+    .small-li {
+        max-height: 300px;
+        overflow: auto;
+
+        &>li {
+            &>h3 {
+                margin-top: 3px;
+            }
+        }
+    }
+</style>
