@@ -26,4 +26,15 @@ var keyString = getKeyString(event);
     <p>
         返回的keyString就是此时按下的键。
     </p>
+    <h2 id='fixed-viewHandler'>
+        屏幕3D控制信息捕获
+    </h2>
+    <pre q-code>
+        import viewHandler from '@hai2007/browser/viewHandler.js';
+    </pre>
+    <pre q-code>
+viewHandler(function(data){
+    // data就包含着当前的控制信息
+});
+    </pre>
 </template>

@@ -1,6 +1,7 @@
 import formatColor from "./formatColor";
 import xhtml from './xhtml';
 import getKeyString from './getKeyString';
+import viewHandler from './viewHandler';
 
 // 导出
 var browser = {
@@ -12,7 +13,10 @@ var browser = {
     xhtml: xhtml,
 
     // 键盘按键
-    getKeyString: getKeyString
+    getKeyString: getKeyString,
+
+    // 三维控制捕获
+    viewHandler: viewHandler
 
 };
 

@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.2.0
+ * version 0.3.0
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Sat Nov 27 2021 13:31:37 GMT+0800 (GMT+08:00)
+ * Date:Mon Jan 03 2022 19:52:04 GMT+0800 (中国标准时间)
  */
 (function () {
     'use strict';
@@ -439,6 +439,55 @@
         return resultKey==''?_key:resultKey;
     }
 
+    /*!
+     * 🌐 - 屏幕3D控制信息捕获
+     * https://github.com/hai2007/browser.js/blob/master/viewHandler.js
+     *
+     * author hai2007 < https://hai2007.gitee.io/sweethome >
+     *
+     * Copyright (c) 2022-present hai2007 走一步，再走一步。
+     * Released under the MIT license
+     */
+
+    function viewHandler (callback) {
+
+        var el = document.getElementsByTagName('body')[0];
+
+        xhtml.bind(el, 'keydown', function (event) {
+            var keyCode = getKeyString(event);
+
+            // 视角向上
+            if (keyCode == 'up') {
+                callback({
+                    type: "lookUp"
+                });
+            }
+
+            // 视角向下
+            else if (keyCode == 'down') {
+                callback({
+                    type: "lookDown"
+                });
+            }
+
+            // 视角向左
+            else if (keyCode == 'left') {
+                callback({
+                    type: "lookLeft"
+                });
+            }
+
+            // 视角向右
+            else if (keyCode == 'right') {
+                callback({
+                    type: "lookRight"
+                });
+            }
+
+        });
+
+    }
+
     // 导出
     var browser = {
 
@@ -449,7 +498,10 @@
         xhtml: xhtml,
 
         // 键盘按键
-        getKeyString: getKeyString
+        getKeyString: getKeyString,
+
+        // 三维控制捕获
+        viewHandler: viewHandler
 
     };
 

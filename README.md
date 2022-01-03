@@ -22,7 +22,39 @@
 
 ## How to use?
 
+首先你需要通过命令行安装，就像这样：
+
+```
+npm install --save @hai2007/browser
+```
+
+安装好了以后，然后引入你需要的方法即可（在具体方法的开头会说明），除此之外，你还可以直接引入全部方法：
+
+```js
+import tool from '@hai2007/browser';
+```
+
+或
+
+```html
+<script src='https://cdn.jsdelivr.net/npm/@hai2007/browser@0'></script>
+```
+
+### 可以使用的接口
+
+- browser.formatColor() : 颜色格式化
+- browser.getKeyString() : 获取当前键盘按下的按键
+- ......等
+
+当然，考虑到web应用打包体积的问题，比如我们希望对dom进行操作，我们有```browser.xhtml```对象，那么，更小提交的引入方式是：
+
+```js
+import xhtml from '@hai2007/browser/xhtml.js';
+```
+
 具体的使用你可以[查阅文档](https://hai2007.github.io/browser.js)哦~
+
+如果在使用的时候，发现文档中有的方法无法使用，可能是你的版本过低导致的，你可以[点击此处](https://github.com/hai2007/browser.js/blob/master/CHANGELOG)查看版本日志。
 
 开源协议
 ---------------------------------------

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用例测试 | browser.js / viewHandler.js</title>
+    <script src="../../dist/browser.js"></script>
+</head>
+
+<body>
+
+    滑动屏幕或者点击方向键等试试后查看控制台！
+
+    <script>
+
+        browser.viewHandler(function (data) {
+
+            // 打印此刻应该进行的变换
+            console.log(data);
+
+        });
+
+    </script>
+
+</body>
+
+</html>

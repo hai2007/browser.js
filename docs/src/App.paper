@@ -8,6 +8,44 @@
             <span @click='loadpage("api","no")' :active='url=="api"?"yes":"no"'>
                 文档
             </span>
+            <span class='select'>
+                <i>
+                    更多内容
+                </i>
+                <div>
+                    <h2>
+                        开源社区
+                    </h2>
+                    <a href="https://clunch-contrib.github.io/community/" title='你可以获得更多关于绘图的相关信息' target="_blank">
+                        clunch-contrib
+                    </a>
+                    <a href="https://github.com/etcpack" title='为前端开发设计的轻量级打包工具。' target="_blank">
+                        EtcPack
+                    </a>
+                    <a href="https://github.com/nefbl" title='我们的目标是开发一个自由、开源、易用、易维护、可扩展等的新一代前端框架。' target="_blank">
+                        Nefbl
+                    </a>
+                    <h2>
+                        相关项目
+                    </h2>
+                    <a href="https://hai2007.github.io/algorithm.js/" title="🔪 一些前端常用的算法实现合集。" target="_blank">
+                        @hai2007/algorithm
+                    </a>
+                    <a href="https://hai2007.github.io/node.js/" title="🔨 node.js常用的基础方法汇总。" target="_blank">
+                        @hai2007/nodejs
+                    </a>
+                    <a href="https://hai2007.github.io/tool.js/" title="💡 前端常用的工具类方法汇总。"
+                        target="_blank">
+                        @hai2007/tool
+                    </a>
+                    <a href="https://www.npmjs.com/package/@hai2007/style" title="👁️  浏览器兼容样式和一些基础样式" target="_blank">
+                        @hai2007/style
+                    </a>
+                    <a href="https://github.com/hai2007" target="_blank" class='more'>
+                        更多内容...
+                    </a>
+                </div>
+            </span>
             <span>
                 <a href="https://github.com/hai2007/browser.js" target="_blank">GitHub</a>
             </span>
@@ -62,7 +100,7 @@
             line-height: 60px;
             padding-left: 80px;
             padding-right: 10px;
-            background-image: url('./assets/logo.png');
+            background-image: url('./image/logo.png');
             background-size: auto 70%;
             background-position: 20px center;
             background-repeat: no-repeat;
@@ -88,22 +126,90 @@
                     display: inline-block;
                     vertical-align: top;
 
-                    &>a {
-                        position: relative;
-                        margin-right: 30px;
+                    &.select {
+                        margin-right: 20px;
+                        white-space: nowrap;
 
-                        &::after {
-                            position: absolute;
-                            background-image: url('./assets/link.png');
-                            background-repeat: no-repeat;
-                            content: " ";
-                            display: inline-block;
-                            width: 11px;
-                            height: 11px;
-                            top: 3px;
-                            right: -16px;
+                        &>i {
+                            &::after {
+                                display: inline-block;
+                                vertical-align: middle;
+                                margin-top: -1px;
+                                margin-left: 6px;
+                                margin-right: -14px;
+                                width: 0;
+                                height: 0;
+                                border-left: 4px solid transparent;
+                                border-right: 4px solid transparent;
+                                border-top: 5px solid #4f5959;
+                                content: " ";
+                            }
+
+                            font-style:normal;
                         }
 
+                        &:hover {
+                            &>div {
+                                display: block;
+                            }
+                        }
+
+                        position: relative;
+
+                        &>div {
+                            display: none;
+                            position: absolute;
+                            box-shadow: 1px 1px 6px 0px #858889;
+                            padding: 10px 20px;
+                            top: 50px;
+                            right: -75px;
+                            background-color: white;
+                            line-height: 2em;
+                            cursor: default;
+
+                            &>a {
+                                display: block;
+                                color: black;
+                                font-weight: 200;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+
+                                &.more {
+                                    text-align: center;
+                                    margin-top: 10px;
+                                    font-size: 12px;
+                                    color: #795548;
+                                    font-weight: 800;
+                                    text-decoration: underline;
+                                }
+
+                            }
+
+                            &>h2 {
+                                font-size: 14px;
+                                margin-top: 10px;
+                            }
+                        }
+
+                        &>a {
+                            position: relative;
+                            margin-right: 30px;
+
+                            &::after {
+                                position: absolute;
+                                background-image: url('./image/link.png');
+                                background-repeat: no-repeat;
+                                content: " ";
+                                display: inline-block;
+                                width: 11px;
+                                height: 11px;
+                                top: 3px;
+                                right: -16px;
+                            }
+
+                        }
                     }
 
                     &[active='yes'] {

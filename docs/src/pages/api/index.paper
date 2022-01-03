@@ -10,6 +10,9 @@
                     <li>
                         <h3 @click='doScroll("getKeyString")'>键盘按下的键的组合结果</h3>
                     </li>
+                    <li>
+                        <h3 @click='doScroll("viewHandler")'>屏幕3D控制信息捕获</h3>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -86,6 +89,9 @@
                 </ul>
             </li>
         </ul>
+        <a class='need-help' href='https://github.com/hai2007/browser.js/issues' target="_blank">
+            不够用？点击此处告诉我们
+        </a>
     </div>
     <div id='root-view' class='view'>
         <div>
@@ -137,6 +143,23 @@
             &>h3 {
                 margin-top: 3px;
             }
+        }
+    }
+
+    .need-help {
+        background-color: #799d41;
+        color: white;
+        text-align: center;
+        margin: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+        font-size: 12px;
+        display: block;
+        padding: 10px 0;
+        border-radius: 7px;
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 </style>
