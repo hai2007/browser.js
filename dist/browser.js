@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.3.0
+ * version 0.3.1
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Mon Jan 03 2022 19:52:04 GMT+0800 (中国标准时间)
+ * Date:Tue Jan 04 2022 16:05:07 GMT+0800 (中国标准时间)
  */
 (function () {
     'use strict';
@@ -453,6 +453,7 @@
 
         var el = document.getElementsByTagName('body')[0];
 
+        // 键盘控制
         xhtml.bind(el, 'keydown', function (event) {
             var keyCode = getKeyString(event);
 
@@ -484,6 +485,40 @@
                 });
             }
 
+        });
+
+        // 鼠标控制
+        var mouseP = null;
+        xhtml.bind(el, 'mousedown', function (event) {
+            mouseP = xhtml.mousePosition(el, event);
+        });
+        xhtml.bind(el, 'mouseup', function (event) {
+            mouseP = null;
+        });
+        xhtml.bind(el, 'mousemove', function (event) {
+            if (mouseP == null) return;
+
+            var tempMouseP = xhtml.mousePosition(el, event);
+
+            // 先求解出轨迹向量
+            var normal = [tempMouseP.x - mouseP.x, mouseP.y - tempMouseP.y];
+
+            // 方向向量旋转90deg得到选择向量
+            var rotateNormal = [
+                normal[1],
+                normal[0] * -1,
+                0
+            ];
+
+            // 非法射线忽略
+            if (rotateNormal[0] == 0 && rotateNormal[1] == 0) return;
+
+            callback({
+                type: "rotate",
+                normal: rotateNormal
+            });
+
+            mouseP = tempMouseP;
         });
 
     }

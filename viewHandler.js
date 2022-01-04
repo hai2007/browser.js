@@ -15,6 +15,7 @@ export default function (callback) {
 
     var el = document.getElementsByTagName('body')[0];
 
+    // 键盘控制
     xhtml.bind(el, 'keydown', function (event) {
         var keyCode = getKeyString(event);
 
@@ -46,6 +47,40 @@ export default function (callback) {
             });
         }
 
+    });
+
+    // 鼠标控制
+    var mouseP = null;
+    xhtml.bind(el, 'mousedown', function (event) {
+        mouseP = xhtml.mousePosition(el, event);
+    });
+    xhtml.bind(el, 'mouseup', function (event) {
+        mouseP = null;
+    });
+    xhtml.bind(el, 'mousemove', function (event) {
+        if (mouseP == null) return;
+
+        var tempMouseP = xhtml.mousePosition(el, event);
+
+        // 先求解出轨迹向量
+        var normal = [tempMouseP.x - mouseP.x, mouseP.y - tempMouseP.y];
+
+        // 方向向量旋转90deg得到选择向量
+        var rotateNormal = [
+            normal[1],
+            normal[0] * -1,
+            0
+        ]
+
+        // 非法射线忽略
+        if (rotateNormal[0] == 0 && rotateNormal[1] == 0) return;
+
+        callback({
+            type: "rotate",
+            normal: rotateNormal
+        });
+
+        mouseP = tempMouseP;
     });
 
 };

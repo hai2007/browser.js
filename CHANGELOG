@@ -13,3 +13,7 @@ v0.3.0:
     changes:
       -  新增一些功能
         （“屏幕3D控制信息捕获” viewHandler.js）
+v0.3.1:
+    date:2022-01-04
+    changes:
+      -  针对 ```viewHandler.js``` 新增对鼠标操作的捕获
