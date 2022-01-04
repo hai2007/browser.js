@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.3.1
+ * version 0.3.2
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Jan 04 2022 16:05:07 GMT+0800 (中国标准时间)
+ * Date:Tue Jan 04 2022 20:07:50 GMT+0800 (GMT+08:00)
  */
 (function () {
     'use strict';
@@ -515,7 +515,8 @@
 
             callback({
                 type: "rotate",
-                normal: rotateNormal
+                normal: rotateNormal,
+                dist: Math.abs(tempMouseP.x - mouseP.x) + Math.abs(tempMouseP.y - mouseP.y)
             });
 
             mouseP = tempMouseP;

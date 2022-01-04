@@ -77,7 +77,8 @@ export default function (callback) {
 
         callback({
             type: "rotate",
-            normal: rotateNormal
+            normal: rotateNormal,
+            dist: Math.abs(tempMouseP.x - mouseP.x) + Math.abs(tempMouseP.y - mouseP.y)
         });
 
         mouseP = tempMouseP;
