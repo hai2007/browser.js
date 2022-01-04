@@ -51,13 +51,7 @@ export default function (callback) {
 
     // 鼠标控制
     var mouseP = null;
-    xhtml.bind(el, 'mousedown', function (event) {
-        mouseP = xhtml.mousePosition(el, event);
-    });
-    xhtml.bind(el, 'mouseup', function (event) {
-        mouseP = null;
-    });
-    xhtml.bind(el, 'mousemove', function (event) {
+    var doMove = function (event) {
         if (mouseP == null) return;
 
         var tempMouseP = xhtml.mousePosition(el, event);
@@ -82,6 +76,27 @@ export default function (callback) {
         });
 
         mouseP = tempMouseP;
+    };
+
+    xhtml.bind(el, 'mousedown', function (event) {
+        mouseP = xhtml.mousePosition(el, event);
+    });
+    xhtml.bind(el, 'mouseup', function (event) {
+        mouseP = null;
+    });
+    xhtml.bind(el, 'mousemove', function (event) {
+        doMove(event);
+    });
+
+    // 手指控制
+    xhtml.bind(el, 'touchend', function (event) {
+        mouseP = null;
+    });
+    xhtml.bind(el, 'touchstart', function (event) {
+        mouseP = xhtml.mousePosition(el, event.touches[0]);
+    });
+    xhtml.bind(el, 'touchmove', function (event) {
+        doMove(event.touches[0]);
     });
 
 };

@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.3.2
+ * version 0.3.3
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Jan 04 2022 20:07:50 GMT+0800 (GMT+08:00)
+ * Date:Tue Jan 04 2022 22:11:18 GMT+0800 (GMT+08:00)
  */
 (function () {
     'use strict';
@@ -489,13 +489,7 @@
 
         // 鼠标控制
         var mouseP = null;
-        xhtml.bind(el, 'mousedown', function (event) {
-            mouseP = xhtml.mousePosition(el, event);
-        });
-        xhtml.bind(el, 'mouseup', function (event) {
-            mouseP = null;
-        });
-        xhtml.bind(el, 'mousemove', function (event) {
+        var doMove = function (event) {
             if (mouseP == null) return;
 
             var tempMouseP = xhtml.mousePosition(el, event);
@@ -520,6 +514,27 @@
             });
 
             mouseP = tempMouseP;
+        };
+
+        xhtml.bind(el, 'mousedown', function (event) {
+            mouseP = xhtml.mousePosition(el, event);
+        });
+        xhtml.bind(el, 'mouseup', function (event) {
+            mouseP = null;
+        });
+        xhtml.bind(el, 'mousemove', function (event) {
+            doMove(event);
+        });
+
+        // 手指控制
+        xhtml.bind(el, 'touchend', function (event) {
+            mouseP = null;
+        });
+        xhtml.bind(el, 'touchstart', function (event) {
+            mouseP = xhtml.mousePosition(el, event.touches[0]);
+        });
+        xhtml.bind(el, 'touchmove', function (event) {
+            doMove(event.touches[0]);
         });
 
     }

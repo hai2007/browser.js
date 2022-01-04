@@ -21,3 +21,7 @@ v0.3.2:
     date:2022-01-04
     changes:
       -  针对 ```viewHandler.js``` 的鼠标操作新增滑动距离
+v0.3.3:
+    date:2022-01-04
+    changes:
+      -  针对 ```viewHandler.js``` 新增手指操作的捕获
