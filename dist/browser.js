@@ -4,12 +4,12 @@
  *
  * author 你好2007 < https://hai2007.gitee.io/sweethome >
  *
- * version 0.3.3
+ * version 0.3.4
  *
  * Copyright (c) 2021-present hai2007 走一步，再走一步。
  * Released under the MIT license
  *
- * Date:Tue Jan 04 2022 22:11:18 GMT+0800 (GMT+08:00)
+ * Date:Wed Jan 05 2022 14:49:02 GMT+0800 (中国标准时间)
  */
 (function () {
     'use strict';
@@ -536,6 +536,29 @@
         xhtml.bind(el, 'touchmove', function (event) {
             doMove(event.touches[0]);
         });
+
+        let doScale = function (value) {
+            if (value == 0) return;
+
+            callback({
+                type: "scale",
+                kind: value < 0 ? "reduce" : "enlarge",
+                rate: Math.abs(value),
+            });
+        };
+
+        // 滚轮控制
+        xhtml.bind(el, 'mousewheel', function (event) {
+            doScale(event.wheelDelta);
+        });
+
+        if (window.addEventListener) {
+
+            // 针对火狐浏览器
+            window.addEventListener('DOMMouseScroll', function (event) {
+                doScale(-1 * event.detail);
+            }, false);
+        }
 
     }
 

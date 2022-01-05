@@ -99,4 +99,27 @@ export default function (callback) {
         doMove(event.touches[0]);
     });
 
+    let doScale = function (value) {
+        if (value == 0) return;
+
+        callback({
+            type: "scale",
+            kind: value < 0 ? "reduce" : "enlarge",
+            rate: Math.abs(value),
+        });
+    };
+
+    // 滚轮控制
+    xhtml.bind(el, 'mousewheel', function (event) {
+        doScale(event.wheelDelta);
+    });
+
+    if (window.addEventListener) {
+
+        // 针对火狐浏览器
+        window.addEventListener('DOMMouseScroll', function (event) {
+            doScale(-1 * event.detail);
+        }, false);
+    }
+
 };
