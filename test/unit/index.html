@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>单元测试 | browser.js</title>
-    <link rel="stylesheet" href="./qunit.css">
-    <script src="./qunit.js"></script>
+    <script src="../../node_modules/async-allege-web/dist/async-allege-web.js"></script>
     <script src="../../dist/browser.js"></script>
 </head>
 
 <body>
 
-    <div id="qunit"></div>
+    <div id="async-allege-web"></div>
+    <script>
+        window.allege = AsyncAllegeWeb(document.getElementById('async-allege-web'));
+    </script>
 
     <script src="./formatColor.spec.js"></script>
 
