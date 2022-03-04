@@ -29,3 +29,7 @@ v0.3.4:
     date:2022-01-05
     changes:
       -  针对 ```viewHandler.js``` 新增滚轮操作的捕获
+v0.3.5:
+    date:2022-03-05
+    changes:
+      -  针对 ```getKeyString.js``` 对于Mac电脑火狐浏览器command捕获错误进行修复
